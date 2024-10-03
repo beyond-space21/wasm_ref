@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>webassembly</title>
+    <title>Wasm Math Operations</title>
+    <script src="src.js"></script>
 </head>
 <body>
-<script src="script.js"></script>
+    <h1>Wasm Math Operations</h1>
+    <script>
+        // Wait for the WebAssembly module to be loaded
+        Module.onRuntimeInitialized = function() {
+            // Wrap the exported functions using cwrap
+            var add = Module.cwrap('addi', 'number', ['number', 'number']);
+            var sub = Module.cwrap('subt', 'number', ['number', 'number']);
+            var mul = Module.cwrap('mult', 'number', ['number', 'number']);
+            var div = Module.cwrap('divi', 'number', ['number', 'number']);
+            
+            // Call the WebAssembly functions
+            console.log("Add: " + add(5.5, 2.5)); // 8.0
+            console.log("Sub: " + sub(5.5, 2.5)); // 3.0
+            console.log("Mul: " + mul(5.5, 2.5)); // 13.75
+            console.log("Div: " + div(5.5, 2.5)); // 2.2
+        };
+    </script>
 </body>
 </html>
