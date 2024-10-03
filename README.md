@@ -21,4 +21,4 @@
 
 
 ### compile
-emcc math_ops.c -o math_ops.js -s EXPORTED_FUNCTIONS="['_add', '_sub', '_mul', '_div']" -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']"
+emcc src.c -o src.js -s EXPORTED_FUNCTIONS="['_addi', '_subt', '_mult', '_divi']" -s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap']"
